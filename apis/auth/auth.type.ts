@@ -6,8 +6,8 @@ export interface LbsAdmin {
   loginId: string;
   name: string;
   permissionType: PermissionType;
-  /** 노출 가능 메뉴 키 콤마 문자열 (예: "provision,access,account") */
-  menuScope: string;
+  /** 노출 가능 메뉴 키 배열 (예: ["provision", "access", "account"]) */
+  menuScope: string[];
 }
 
 /** access token payload */

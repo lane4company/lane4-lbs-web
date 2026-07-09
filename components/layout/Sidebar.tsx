@@ -7,14 +7,9 @@ import { useSession } from 'next-auth/react';
 import { MENU, MenuItemDef } from '@/constants/menu';
 import { hasPermissionAtLeast, permissionLabel } from '@/constants/permission';
 
-function parseMenuScope(menuScope: string | undefined): Set<string> {
+function parseMenuScope(menuScope: string[] | undefined): Set<string> {
   if (!menuScope) return new Set();
-  return new Set(
-    menuScope
-      .split(',')
-      .map((item) => item.trim())
-      .filter(Boolean),
-  );
+  return new Set(menuScope.map((item) => item.trim()).filter(Boolean));
 }
 
 export default function Sidebar() {

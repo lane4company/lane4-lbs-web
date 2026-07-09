@@ -2,7 +2,7 @@ import type { PermissionType } from '@/constants/permission';
 
 /**
  * 사이드바 메뉴 정의.
- * - scope: session.admin.menuScope(콤마 문자열)에 이 키가 포함되어야 노출
+ * - scope: session.admin.menuScope(메뉴 키 배열)에 이 키가 포함되어야 노출
  * - minPermission: 지정 시 해당 권한 이상만 노출 (menuScope 와 AND 조건)
  */
 export interface MenuItemDef {
