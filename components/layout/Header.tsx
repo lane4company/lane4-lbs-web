@@ -11,10 +11,12 @@ import { formatDateTime, formatMmSs } from '@/utils/format';
 export default function Header() {
   const { data: session } = useSession();
   const { remainingMs } = useIdle();
-  const [now, setNow] = useState<string>(() => formatDateTime(Date.now()));
+  // SSR/클라이언트 시각 차이로 인한 하이드레이션 미스매치 방지 — 마운트 후에만 표시
+  const [now, setNow] = useState<string | null>(null);
 
   // 현재시각 1초 tick
   useEffect(() => {
+    setNow(formatDateTime(Date.now()));
     const interval = window.setInterval(() => setNow(formatDateTime(Date.now())), 1000);
     return () => window.clearInterval(interval);
   }, []);
@@ -35,7 +37,7 @@ export default function Header() {
     <header className='flex h-16 items-center justify-between border-b border-gray-300 bg-white px-6'>
       <div className='flex items-center gap-6 text-xs text-gray-700'>
         <span>
-          현재시각 <span className='font-medium text-gray-800'>{now}</span>
+          현재시각 <span className='font-medium text-gray-800'>{now ?? '-'}</span>
         </span>
         <span>
           접속시간 <span className='font-medium text-gray-800'>{formatDateTime(session?.loginAt)}</span>
