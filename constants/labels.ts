@@ -32,7 +32,7 @@ export const ACCESS_TYPE_OPTIONS: Array<{ label: string; value: AccessType }> = 
 export const PERMISSION_ACTION_LABEL: Record<PermissionActionType, string> = {
   GRANT: '부여',
   CHANGE: '변경',
-  REVOKE: '말소',
+  REVOKE: '제거',
 };
 
 export const PERMISSION_ACTION_OPTIONS: Array<{ label: string; value: PermissionActionType }> = (
@@ -42,7 +42,7 @@ export const PERMISSION_ACTION_OPTIONS: Array<{ label: string; value: Permission
 export const ADMIN_STATUS_LABEL: Record<AdminStatus, string> = {
   ACTIVE: '정상',
   LOCKED: '잠금',
-  DELETED: '말소',
+  DELETED: '제거',
 };
 
 export const IP_CONTROL_TYPE_LABEL: Record<IpControlType, string> = {

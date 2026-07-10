@@ -82,9 +82,9 @@ export default function AccountPage() {
   const onRemove = async (row: AdminRow) => {
     try {
       await removeAdmin.mutateAsync(row.adminId);
-      message.success('계정이 말소되었습니다.');
+      message.success('계정이 제거되었습니다.');
     } catch (error) {
-      message.error(error instanceof Error ? error.message : '계정 말소에 실패했습니다.');
+      message.error(error instanceof Error ? error.message : '계정 제거에 실패했습니다.');
     }
   };
 
@@ -148,15 +148,15 @@ export default function AccountPage() {
               </Button>
             ) : null}
             <Popconfirm
-              title='계정 말소'
-              description='이 계정을 말소하시겠습니까?'
-              okText='말소'
+              title='계정 제거'
+              description='이 계정을 제거하시겠습니까?'
+              okText='제거'
               cancelText='취소'
               okButtonProps={{ danger: true }}
               onConfirm={() => onRemove(row)}
             >
               <Button size='small' danger>
-                말소
+                제거
               </Button>
             </Popconfirm>
           </Space>
@@ -169,7 +169,7 @@ export default function AccountPage() {
     <div>
       <PageHeader
         title='계정 관리'
-        description='LBS 관리자 계정을 등록/수정하고 권한 변경·잠금 해제·말소를 관리합니다.'
+        description='LBS 관리자 계정을 등록/수정하고 권한 변경·잠금 해제·제거를 관리합니다.'
         actions={
           <Button type='primary' onClick={() => setCreateOpen(true)}>
             계정 등록

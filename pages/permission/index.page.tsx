@@ -139,7 +139,7 @@ export default function PermissionPage() {
 
   return (
     <div>
-      <PageHeader title='권한 관리' description='권한 마스터 현황과 부여/변경/말소 이력을 조회합니다.' />
+      <PageHeader title='권한 관리' description='권한 마스터 현황과 부여/변경/제거 이력을 조회합니다.' />
 
       <Tabs
         activeKey={tab}
