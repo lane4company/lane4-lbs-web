@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { Button } from 'antd';
+import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 
 import { AuthService } from '@/apis/auth';
@@ -55,6 +56,9 @@ export default function Header() {
           <span className='font-semibold text-navy-1000'>{admin?.name ?? '-'}</span>
           <span className='ml-1 text-gray-600'>({permissionLabel(admin?.permissionType)})</span>
         </span>
+        <Link href='/my-info'>
+          <Button size='small'>내 정보</Button>
+        </Link>
         <Button size='small' onClick={onLogout}>
           로그아웃
         </Button>
