@@ -57,7 +57,7 @@ const historyColumns: ColumnsType<PermissionHistoryRow> = [
     key: 'target',
     width: 180,
     align: 'center',
-    render: (_, row) => `${row.targetName} (${row.targetLoginId})`,
+    render: (_, row) => `${row.adminName} (${row.loginId})`,
   },
   {
     title: '유형',
@@ -82,12 +82,11 @@ const historyColumns: ColumnsType<PermissionHistoryRow> = [
   },
   {
     title: '수행자',
-    key: 'actor',
+    dataIndex: 'actorLoginId',
     width: 180,
     align: 'center',
-    render: (_, row) => `${row.actorName} (${row.actorLoginId})`,
   },
-  { title: 'IP', dataIndex: 'ip', width: 150, align: 'center' },
+  { title: 'IP', dataIndex: 'actorIp', width: 150, align: 'center' },
   {
     title: '일시',
     dataIndex: 'regDt',
