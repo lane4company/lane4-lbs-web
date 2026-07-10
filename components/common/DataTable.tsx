@@ -46,7 +46,7 @@ export default function DataTable<T extends object>({
         hidePagination
           ? false
           : clientPagination
-            ? { pageSize, showSizeChanger: false, showTotal }
+            ? { pageSize, showSizeChanger: false, showTotal, align: 'center' }
             : {
                 current: meta?.currentPage ?? 1,
                 pageSize: meta?.perPage ?? DEFAULT_PER_PAGE,
@@ -54,6 +54,7 @@ export default function DataTable<T extends object>({
                 showSizeChanger: false,
                 onChange: onPageChange,
                 showTotal,
+                align: 'center',
               }
       }
     />

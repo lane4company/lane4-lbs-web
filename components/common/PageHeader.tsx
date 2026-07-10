@@ -9,7 +9,7 @@ interface PageHeaderProps {
 
 export default function PageHeader({ title, description, actions }: PageHeaderProps) {
   return (
-    <div className='mb-5 flex items-end justify-between'>
+    <div className='mb-5 flex items-end gap-4'>
       <div>
         <h1 className='text-xl font-semibold text-navy-1000'>{title}</h1>
         {description ? <p className='mt-1 text-sm text-gray-600'>{description}</p> : null}

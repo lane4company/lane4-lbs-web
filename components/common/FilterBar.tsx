@@ -10,7 +10,7 @@ export default function FilterBar({ children, actions }: PropsWithChildren<Filte
   return (
     <div className='mb-4 flex flex-wrap items-center gap-3 rounded border border-gray-300 bg-white p-4'>
       {children}
-      {actions ? <div className='ml-auto flex items-center gap-2'>{actions}</div> : null}
+      {actions ? <div className='flex items-center gap-2'>{actions}</div> : null}
     </div>
   );
 }
