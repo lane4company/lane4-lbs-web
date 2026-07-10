@@ -18,5 +18,5 @@ export const MENU: MenuItemDef[] = [
   { key: 'account', name: '계정관리', path: '/account', minPermission: 'OFFICER' },
   { key: 'permission', name: '권한관리', path: '/permission' },
   { key: 'ip', name: 'IP관리', path: '/ip', minPermission: 'OFFICER' },
-  { key: 'destruction', name: '파기관리', path: '/destruction', minPermission: 'OFFICER' },
+  { key: 'destruction', name: '데이터 파기', path: '/destruction', minPermission: 'OFFICER' },
 ];

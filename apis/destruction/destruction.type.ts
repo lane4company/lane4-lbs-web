@@ -9,7 +9,7 @@ export interface DestructionStatus {
 }
 
 export interface BusinessClosedDestructionParams {
-  /** 확인 문자열, 반드시 "휴폐업파기" */
+  /** 확인 문자열, 반드시 "데이터파기" */
   confirmText: string;
 }
 
@@ -22,4 +22,4 @@ export interface BusinessClosedDestructionResult {
   skipped: boolean;
 }
 
-export const DESTRUCTION_CONFIRM_TEXT = '휴폐업파기';
+export const DESTRUCTION_CONFIRM_TEXT = '데이터파기';
