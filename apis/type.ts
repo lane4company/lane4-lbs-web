@@ -11,7 +11,7 @@ export interface CommonResponse<T> {
 export interface ListMeta {
   currentPage: number;
   perPage: number;
-  totalCnt: number;
+  totalCount: number;
   totalPage: number;
 }
 

@@ -50,7 +50,7 @@ export default function DataTable<T extends object>({
             : {
                 current: meta?.currentPage ?? 1,
                 pageSize: meta?.perPage ?? DEFAULT_PER_PAGE,
-                total: meta?.totalCnt ?? 0,
+                total: meta?.totalCount ?? 0,
                 showSizeChanger: false,
                 onChange: onPageChange,
                 showTotal,
