@@ -29,7 +29,6 @@ function boolCell(value: boolean): string {
 }
 
 const masterColumns: ColumnsType<PermissionRow> = [
-  { title: '번호', dataIndex: 'id', width: 70, align: 'center' },
   { title: '권한자', dataIndex: 'name', width: 140, align: 'center' },
   {
     title: '권한자 역할',
