@@ -2,17 +2,19 @@ import { queryOptions } from '@tanstack/react-query';
 
 import { AdminService } from '@/apis/admin';
 
+import type { AdminListFilter } from '@/apis/admin';
+
 export class AdminQueries {
   static readonly keys = {
     all: ['admin'] as const,
-    list: () => [...AdminQueries.keys.all, 'list'] as const,
+    list: (filter?: AdminListFilter) => [...AdminQueries.keys.all, 'list', filter ?? {}] as const,
   };
 
-  /** 전체 관리자 목록 (필터/페이지네이션은 클라이언트 처리) */
-  static list() {
+  /** 관리자 목록 (permissionType·status·keyword 서버측 필터) */
+  static list(filter?: AdminListFilter) {
     return queryOptions({
-      queryKey: AdminQueries.keys.list(),
-      queryFn: () => AdminService.getList(),
+      queryKey: AdminQueries.keys.list(filter),
+      queryFn: () => AdminService.getList(filter),
     });
   }
 }

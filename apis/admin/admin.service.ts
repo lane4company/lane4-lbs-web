@@ -2,15 +2,23 @@ import { AxiosV2 } from '@/utils/AxiosV2';
 
 import type {
   AdminCreateParams,
+  AdminListFilter,
   AdminPermissionUpdateParams,
   AdminRow,
   AdminUpdateParams,
 } from '@/apis/admin/admin.type';
 
 export class AdminService {
-  /** 전체 관리자 목록 (meta 없음, data.list) */
-  static async getList(): Promise<AdminRow[]> {
-    return AxiosV2.GET<{ list: AdminRow[] }>({ url: 'lbs/v2/admins' }).then((res) => res.data.list);
+  /** 관리자 목록 (meta 없음, data.list / permissionType·status·keyword 서버측 필터) */
+  static async getList(filter: AdminListFilter = {}): Promise<AdminRow[]> {
+    const params = {
+      permissionType: filter.permissionType,
+      status: filter.status,
+      keyword: filter.keyword?.trim() || undefined,
+    };
+    return AxiosV2.GET<{ list: AdminRow[] }, typeof params>({ url: 'lbs/v2/admins', params }).then(
+      (res) => res.data.list,
+    );
   }
 
   static async create(params: AdminCreateParams): Promise<boolean> {

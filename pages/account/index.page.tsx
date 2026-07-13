@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import { App, Button, Input, Popconfirm, Select, Space, Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
@@ -35,7 +35,7 @@ interface AppliedFilter {
 export default function AccountPage() {
   const { message } = App.useApp();
 
-  // 서버는 전체 반환 → 필터/페이지네이션은 클라이언트에서 처리
+  // 필터는 서버측 처리, 페이지네이션만 클라이언트(DataTable clientPagination)
   const [keyword, setKeyword] = useState('');
   const [permissionType, setPermissionType] = useState<PermissionType | undefined>(undefined);
   const [status, setStatus] = useState<AdminStatus | undefined>(undefined);
@@ -45,21 +45,9 @@ export default function AccountPage() {
   const [editTarget, setEditTarget] = useState<AdminRow | null>(null);
   const [permissionTarget, setPermissionTarget] = useState<AdminRow | null>(null);
 
-  const { data, isFetching } = useQuery(AdminQueries.list());
+  const { data, isFetching } = useQuery(AdminQueries.list(applied));
   const unlockAdmin = useUnlockAdmin();
   const removeAdmin = useRemoveAdmin();
-
-  const filtered = useMemo<AdminRow[]>(() => {
-    const list: AdminRow[] = data ?? [];
-    const kw = applied.keyword.trim().toLowerCase();
-    return list.filter((row) => {
-      const matchKeyword =
-        !kw || row.name.toLowerCase().includes(kw) || row.loginId.toLowerCase().includes(kw);
-      const matchPermission = !applied.permissionType || row.permissionType === applied.permissionType;
-      const matchStatus = !applied.status || row.status === applied.status;
-      return matchKeyword && matchPermission && matchStatus;
-    });
-  }, [data, applied]);
 
   const onSearch = () => setApplied({ keyword, permissionType, status });
 
@@ -215,7 +203,7 @@ export default function AccountPage() {
 
       <DataTable<AdminRow>
         columns={columns}
-        data={filtered}
+        data={data ?? []}
         loading={isFetching}
         rowKey='adminId'
         clientPagination

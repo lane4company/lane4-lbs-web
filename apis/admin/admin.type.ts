@@ -19,7 +19,7 @@ export interface AdminRow {
   deletedAt: string | null;
 }
 
-/** 클라이언트 측 목록 필터 (서버는 전체 반환) */
+/** 목록 필터 (서버측 필터링 / keyword=이름 또는 로그인ID) */
 export interface AdminListFilter {
   keyword?: string;
   permissionType?: PermissionType;
