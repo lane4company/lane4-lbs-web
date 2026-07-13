@@ -116,6 +116,13 @@ export default function AccountPage() {
       ),
     },
     {
+      title: '삭제일시',
+      dataIndex: 'deletedAt',
+      width: 160,
+      align: 'center',
+      render: (value: string | null) => (value ? formatDateTime(value) : '-'),
+    },
+    {
       title: '관리',
       key: 'action',
       width: 260,
