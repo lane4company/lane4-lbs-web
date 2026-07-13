@@ -23,7 +23,6 @@ function coordinateCell(latitude: number, longitude: number): string {
 }
 
 const ledgerColumns: ColumnsType<LocationRow> = [
-  { title: '번호', dataIndex: 'id', width: 80, align: 'center' },
   {
     title: '이벤트구분',
     dataIndex: 'eventType',
@@ -60,7 +59,6 @@ const ledgerColumns: ColumnsType<LocationRow> = [
 ];
 
 const historyColumns: ColumnsType<LocationHistoryRow> = [
-  { title: '번호', dataIndex: 'id', width: 80, align: 'center' },
   {
     title: '이벤트구분',
     dataIndex: 'eventType',

@@ -20,7 +20,6 @@ import type { PermissionType } from '@/constants/permission';
 const { RangePicker } = DatePicker;
 
 const columns: ColumnsType<AccessLogRow> = [
-  { title: '번호', dataIndex: 'id', width: 80, align: 'center' },
   {
     title: '접근일시',
     dataIndex: 'accessDt',
