@@ -20,23 +20,17 @@ export interface PermissionRow {
 /** 권한 이력 유형 */
 export type PermissionActionType = 'GRANT' | 'CHANGE' | 'REVOKE';
 
-/** 권한 부여/변경/제거 이력 행 (대상자/유형/전후 권한/수행자/IP/일시) */
+/** 권한 부여/변경/말소 이력 행 (대상자/유형/전후 권한/수행자/IP/일시) */
 export interface PermissionHistoryRow {
   id: number;
-  /** 대상 계정ID */
-  adminId: number;
-  /** 대상 로그인ID(스냅샷) */
-  loginId: string;
-  /** 대상자 이름(스냅샷) */
-  adminName: string;
+  targetName: string;
+  targetLoginId: string;
   actionType: PermissionActionType;
   beforePermission: PermissionType | null;
   afterPermission: PermissionType | null;
-  /** 수행자 계정ID */
-  actorAdminId: number;
-  /** 수행자 로그인ID (수행자 이름은 백엔드가 제공하지 않음) */
+  actorName: string;
   actorLoginId: string;
-  actorIp: string;
+  ip: string;
   regDt: string;
 }
 
